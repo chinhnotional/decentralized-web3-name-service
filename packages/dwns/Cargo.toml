@@ -1,0 +1,41 @@
+[package]
+name = "dwns"
+version = "0.1.0"
+edition = "2021"
+author = ["chinhnotional <eyescryptoinsights@gmail.com"]
+
+exclude = [
+  # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+  "contract.wasm",
+  "hash.txt",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cosmwasm-std = { version = "1.0.0-beta" }
+cosmwasm-storage = { version = "1.0.0-beta5" }
+cw-storage-plus = "0.12.1"
+cw0 = "0.10.3"
+cw2 = "0.12.1"
+cw721 = "0.11.0"
+schemars = "0.8.3"
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+tiny-keccak = "1.4.2"
+thiserror = { version = "1.0" }
+hex = "0.4.3"
+base64 = "0.13.0"
+chrono = "0.4.19"
+unicode-segmentation = "1.8.0"
+
+[dev-dependencies]
+cosmwasm-schema = { version = "1.0.0-beta3" }
